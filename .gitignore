@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+*.bak
+*.log
+*.env
+.venv/
+venv/
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Docker
+.dockerignore
+*.tar
+*.img
+*.iso
+docker-compose.override.yml
+
+# Kubernetes
+*.yaml
+*.yml
+*.json
+.kube/
+kubeconfig
+
+# Common IDE files
+.vscode/
+.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
