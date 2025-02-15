@@ -13,13 +13,13 @@ app.config["MYSQL_PORT"] = os.environ.get("MYSQL_PORT")
 mysql = MySQL(app)
 
 
-def createJWT(username, secret, admin):
+def createJWT(username, secret, is_admin):
     return jwt.encode(
         {
             "username": username,
             "expire_at": datetime.datetime.now(tz=datetime.datetime.utc) + datetime.timedelta(days=1),
             "issued_at": datetime.datetime.now(tz=datetime.datetime.utc),
-            "admin": admin
+            "is_admin": is_admin
         }, 
         secret, 
         algorithm="HS256"

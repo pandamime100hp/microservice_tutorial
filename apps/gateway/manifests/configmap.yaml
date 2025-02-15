@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-configmap
+data:
+  MONGO_URI: mongodb://host.minikube.internal:27017/videos
+  AUTH_SERVICE_HOST: auth:5000
