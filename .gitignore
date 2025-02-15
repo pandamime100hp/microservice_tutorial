@@ -20,11 +20,10 @@ poetry.lock
 docker-compose.override.yml
 
 # Kubernetes
-*.yaml
-*.yml
-*.json
+secrets.yaml
+secrets.yml
+secrets.json
 .kube/
-kubeconfig
 
 # Common IDE files
 .vscode/
