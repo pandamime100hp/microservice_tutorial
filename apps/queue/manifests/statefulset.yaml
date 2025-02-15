@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: queue
+spec:
+  serviceName: queue
+  replicas: 1
+  selector:
+    matchLabels:
+      app: queue
+  template:
+    metadata:
+      labels:
+        app: queue
+    spec:
+      containers:
+        - name: queue
+          image: rabbitmq:3-management
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 15672
+            - name: amqp
+              protocol: TCP
+              containerPort: 5672
+          envFrom:
+            - configMapRef:
+                name: queue-configmap
+            - secretRef:
+                name: queue-secret
+          volumeMounts:
+            - name: queue-volume
+              mountPath: /var/lib/queue
+      volumes:
+        - name: queue-volume
+          persistentVolumeClaim:
+            claimName: queue-pvc

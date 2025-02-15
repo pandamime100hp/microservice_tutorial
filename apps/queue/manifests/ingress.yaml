@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: queue-ingress
+spec:
+  rules: 
+    - host: queue.pandamime100hp.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: queue
+                port:
+                  number: 15672

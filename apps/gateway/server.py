@@ -17,7 +17,7 @@ mongo = PyMongo(app)
 
 fs = gridfs.GridFS(mongo.db)
 
-connection = pika.BlockingConnection(pika.ConnectionParameters("rabbitmq"))
+connection = pika.BlockingConnection(pika.ConnectionParameters("queue"))
 channel = connection.channel()
 
 channel.exchange_declare(exchange="video", exchange_type="fanout")
