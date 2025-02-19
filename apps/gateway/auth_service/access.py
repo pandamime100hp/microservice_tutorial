@@ -8,7 +8,7 @@ def login(request):
     
     basic_auth = (auth.username, auth.password)
     
-    res = requests.post(f"http://{os.environ.get('AUTH_SERVICE_HOST')}:5000/login", auth=basic_auth)
+    res = requests.post(f"http://{os.environ.get('AUTH_SERVICE_HOST')}/login", auth=basic_auth)
 
     if res.status_code == 200:
         return res.text, None

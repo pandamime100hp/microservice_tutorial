@@ -21,8 +21,6 @@ spec:
       containers:
         - name: gateway
           image: pandamime100hp/gateway
-          ports:
-            - containerPort: 5000
           envFrom:
             - configMapRef:
                 name: gateway-configmap

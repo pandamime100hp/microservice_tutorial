@@ -45,7 +45,7 @@ def upload():
         if "file" not in request.files:
             return "no file", 400
 
-        for _, file in request.files["file"]:
+        for _, file in request.files.items():
             err, status = util.upload(file, fs, channel, access)
 
             if err:
