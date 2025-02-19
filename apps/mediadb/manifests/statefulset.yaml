@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mediadb
+  labels:
+    app: mediadb
+spec:
+  selector:
+    matchLabels:
+      app: mediadb
+  serviceName: mediadb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mediadb
+    spec:
+      containers:
+        - name: mediadb
+          image: mongo:latest
+          ports:
+            - name: mongo
+              protocol: TCP
+              containerPort: 27017
+          volumeMounts:
+            - name: mediadb-volume
+              mountPath: /var/lib/mediadb
+      volumes:
+        - name: mediadb-volume
+          persistentVolumeClaim:
+            claimName: mediadb-pvc
