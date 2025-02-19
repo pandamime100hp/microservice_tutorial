@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: authdb
+  labels:
+    app: authdb
+spec:
+  serviceName: authdb
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authdb
+  template:
+    metadata:
+      labels:
+        app: authdb
+    spec:
+      containers:
+        - name: authdb
+          image: mysql:lts
+          ports:
+            - name: mysql
+              protocol: TCP
+              containerPort: 3306
+          envFrom:
+            - secretRef:
+                name: authdb-secret
+          volumeMounts:
+            - name: authdb-volume
+              mountPath: /var/lib/authdb
+          volumeMounts:
+            - name: mysql-init-db
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: authdb-volume
+          persistentVolumeClaim:
+            claimName: authdb-pvc
+        - name: mysql-init-db
+          configMap:
+            name: authdb-configmap

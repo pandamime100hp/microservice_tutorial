@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authdb
+  labels:
+    app: authdb
+spec:
+  type: ClusterIP
+  selector:
+    app: authdb
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
