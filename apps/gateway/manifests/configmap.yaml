@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: gateway-configmap
 data:
-  MONGO_URI: mongodb://mediadb:27017/videos
+  MONGO_URI: mongodb://mediadb:27017
   AUTH_SERVICE_HOST: auth:5000

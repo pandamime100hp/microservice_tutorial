@@ -27,3 +27,7 @@ def upload(file, fs, channel, access):
         return f"channel: internal server error: {e}", 500
     
     return None, 201
+
+
+def download(file_id, fs, channel, access):
+    
