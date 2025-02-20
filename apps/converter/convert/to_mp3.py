@@ -34,7 +34,7 @@ def start(body, fs_videos, fs_mp3s, channel):
         channel.basic_publish(
             exchange="", 
             routing_key=os.environ.get("MP3_QUEUE_NAME"), 
-            body=tf_path,
+            body=json.dumps(message),
             properties=pika.BasicProperties(
                 delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE
             )
