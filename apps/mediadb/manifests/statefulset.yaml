@@ -24,7 +24,7 @@ spec:
               containerPort: 27017
           volumeMounts:
             - name: mediadb-volume
-              mountPath: /var/lib/mediadb
+              mountPath: "/var/lib/mediadb"
       volumes:
         - name: mediadb-volume
           persistentVolumeClaim:

@@ -30,7 +30,7 @@ spec:
                 name: queue-secret
           volumeMounts:
             - name: queue-volume
-              mountPath: /var/lib/queue
+              mountPath: "/var/lib/queue"
       volumes:
         - name: queue-volume
           persistentVolumeClaim:
