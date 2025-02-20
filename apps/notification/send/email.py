@@ -16,7 +16,7 @@ def notification(body):
         msg["From"] = sender_address
         msg["To"] = receiver_address
 
-        server = smtplib.SMTP("smtp.gmail.com")
+        server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender_address, sender_password)
         server.send_message(msg)
