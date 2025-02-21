@@ -16,3 +16,9 @@ A microservice based application which I built while following along the tutoria
  -- Notification service is used to notify the end user when their uploaded file has completed the conversion and is ready to download by sending the user an email.
  - queue
  -- Queue service is the messaging event bus where events are passed around between services to process data.
+
+ The application is designed to run using a Kubernetes cluster. The application was tested using minikube. Each service contains a folder called `manifests` where all of the Kubernetes configuration is found. 
+
+ StatefulSet objects are used for the MongoDB, MySQL and rabbit-mq instances as we want to make sure that their data persists using persistant volumes incase the machines are recycled.
+
+ Deployment objects are used for the auth, gateway, converter and notification instances as we do not need to manage any states
